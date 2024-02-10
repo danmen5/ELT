@@ -1,0 +1,4 @@
+tweepy
+snowflake-connector-python
+pandas
+boto3
