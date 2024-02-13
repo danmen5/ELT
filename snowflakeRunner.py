@@ -59,28 +59,10 @@ class snowflakeRunner:
                 sql_query = file.read()
             
             self.cursor.execute(sql_query)
+            queryResult=self.cursor.fetchone()[0]
+            print(queryResult)
+            return queryResult
             print("Query executed successfully.")
         except Exception as e:
             print("Error executing query:", e)
 
-# Example usage:
-if __name__ == "__main__":
-    # Initialize SnowflakeQueryExecutor
-    snowflakeRunner = snowflakeRunner(
-        account='mfb94343.us-east-1',
-        user='DANMEN5',
-        password='Efatnas10',
-        warehouse='COMPUTE_WH',
-        database='PROJECTS',
-        schema='BRONZE'
-    )
-
-    # Connect to Snowflake
-    snowflakeRunner.connect()
-
-    # Execute SQL query from file
-    query_file_path = 'TableExists.sql'  # Path to your SQL query file
-    snowflakeRunner.execute_query_from_file(query_file_path)
-
-    # Disconnect from Snowflake
-    snowflakeRunner.disconnect()
