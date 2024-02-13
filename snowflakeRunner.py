@@ -59,6 +59,7 @@ class snowflakeRunner:
                 sql_query = file.read()
             
             self.cursor.execute(sql_query)
+            #Saves the return out of the query to use it to retrieve max date.
             queryResult=self.cursor.fetchone()[0]
             print(queryResult)
             return queryResult
