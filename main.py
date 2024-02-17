@@ -2,31 +2,32 @@ from s3 import S3Uploader
 from snowflakeRunner import snowflakeRunner
 from readTweet import readTweet
 from datetime import date
+import os
 def main():
     try:
         #Creates the connection with tweeter
-        consumer_key='******'
-        consumer_key_secret='*******'
-        access_token='*********'
-        access_token_secret='********'
+        consumer_key=os.getenv('TwitterKEY')
+        consumer_key_secret=os.getenv('TwitterSECRETKEY')
+        access_token=os.getenv('TwitterTOKEN')
+        access_token_secret=os.getenv('TwitterTOKENSECRET')
         reader = readTweet(consumer_key, consumer_key_secret, access_token, access_token_secret)
     except:
         pass
 
     #Creates the connection with s3
-    access_key_id='*********'
-    secret_access_key='*******'
-    bucket_name='********'
+    access_key_id=os.getenv('S3KEY')
+    secret_access_key=os.getenv('S3ACCESSKEY')
+    bucket_name=os.getenv('BUCKET')
     uploader = S3Uploader(access_key_id, secret_access_key, bucket_name)
 
     #Creates the connection with snowflake
     snowflakeConnector = snowflakeRunner(
-        account='******',
-        user='******',
-        password='******',
-        warehouse='******',
-        database='******',
-        schema='*******'
+        account=os.getenv('SFACC'),
+        user=os.getenv('SFUSER'),
+        password=os.getenv('SFPW'),
+        warehouse=os.getenv('SFWH'),
+        database=os.getenv('SFDB'),
+        schema=os.getenv('SFSC')
     )
 
     # Connect to Snowflake
