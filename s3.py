@@ -24,12 +24,4 @@ class S3Uploader:
         except Exception as e:
             print(f"Error uploading file '{file_path}' to S3 bucket '{self.bucket_name}': {e}")
 
-# Example usage:
-# Replace 'your_access_key_id', 'your_secret_access_key', and 'your_bucket_name' with your actual AWS credentials and bucket name
-access_key_id='AKIA3FLDXHL3GHXHBOH3'
-secret_access_key='R7367oJO5yaOQkBCSUHWz6FgtKcR4n8mTxagzn8m'
-bucket_name='snowflake-danmen'
-uploader = S3Uploader(access_key_id, secret_access_key, bucket_name)
-# Assuming readTweet generates a CSV file called 'tweets.csv'
-tweet_file_path = 'tweets.csv'
-uploader.upload_file(tweet_file_path)
+
