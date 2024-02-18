@@ -2,3 +2,4 @@ tweepy
 snowflake-connector-python
 pandas
 boto3
+apache-airflow
